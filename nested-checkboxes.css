@@ -52,8 +52,12 @@ li.checklist-item input, li.checklist-item span, li.checklist-item i{
   font-size: 20px;
   color: #333;
 }
+li.checklist-item label {display: inline-block; }
+li.checklist-item .options{ display: none; }
+li.checklist-item:hover .options{ display: inherit; }
 li.checklist-item input:checked ~ i, li.checklist-item input:checked ~ span{ color: #AAA; }
 li.checklist-item input:checked ~ span{ text-decoration: line-through; }
+li.checklist-item input:checked ~ span.options{ text-decoration: none; }
 
 li.checklist-item input ~ .icon-check{ display: none; }
 li.checklist-item input:checked ~ .icon-check{ display: inline-block; }
