@@ -8,28 +8,32 @@
   </div>
 </body>
 
+<template name='item'>
+  <li class='checklist-item alert alert-warn form-inline'>
+    <span class='options pull-right'>
+      <a href='#' id="{{_id}}" class='edit-checkbox'>Edit</a>
+      <a href='#'>Delete</a>
+    </span>
+    <label class='checkbox'>
+      <input class='hide checkbox' type='checkbox' {{checked}}/>
+      <i class="icon-check-empty"></i>
+      <i class="icon-check"></i>
+      <span>
+        {{#if editing_title}}
+        <input type="text" id="editing_title" value="{{title}}" />
+        {{else}}
+          {{title}}
+        {{/if}}
+      </span>
+    </label>
+  </li>
+</template>
+
 <template name='checklist'>
   <h1>Checklist</h1>
   <ul class='unstyled'>
     {{#each items}}
-    <li class='checklist-item alert alert-warn'>
-      <span class='options pull-right'>
-        <a href='#' id="{{_id}}" class='edit-checkbox'>Edit</a>
-        <a href='#'>Delete</a>
-      </span>
-      <label class='checkbox'>
-        <input class='hide checkbox' type='checkbox' {{checked}}/>
-        <i class="icon-check-empty"></i>
-        <i class="icon-check"></i>
-        <span>
-          {{#if editing_title}}
-          <input type="text" id="editing_title" value="{{title}}" />
-          {{else}}
-            {{title}}
-          {{/if}}
-        </span>
-      </label>
-    </li>
+    {{> item }}
     {{/each}}
     <li class='form-inline'>
       {{#if adding_checkbox}}

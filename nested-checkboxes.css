@@ -51,6 +51,7 @@
 li.checklist-item input, li.checklist-item span, li.checklist-item i{
   font-size: 20px;
   color: #333;
+  margin: 0;
 }
 li.checklist-item label {display: inline-block; }
 li.checklist-item .options{ display: none; }
