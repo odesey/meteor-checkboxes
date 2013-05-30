@@ -1,3 +1,5 @@
+Meteor.subscribe('checklists', Meteor.userId());
+
 Template.checklist.items = function(){
   return checklists.find();
 }
@@ -29,13 +31,21 @@ Template.checklist.events({
   },
   'click #add_checkbox': function(e, t){
     Session.set('adding_checkbox', true);
+    Meteor.flush();
+    t.find('#new_checkbox_name').focus();
   }
 });
 Template.item.events({
   'click .edit-checkbox': function(e, t){
-    Session.set('editing_title', e.target.id);
+    Session.set('editing_title', this._id);
     Meteor.flush();
     t.find('#editing_title').focus();
+  },
+  'click .delete-checkbox': function(e, t){
+    _this = this;
+    $(t.firstNode).slideUp(function(){
+      checklists.remove({_id: _this._id});
+    });
   }
 });
 
@@ -51,7 +61,7 @@ Template.checklist.events(okCancel(
   '#new_checkbox_name',
   {
     ok: function(val, t){
-      checklists.insert({title: val, sublist: [], completed: false});
+      checklists.insert({title: val, sublist: [], completed: false, owner: Meteor.userId()});
       Session.set('adding_checkbox', false);
     },
     cancel: function(){

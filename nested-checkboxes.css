@@ -1,5 +1,24 @@
 /* CSS declarations go here */
 
+* {
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding-top: 50px;
+}
+#editing_title {
+  height: 25px;
+}
+
+#login-dropdown-list {
+  top: 45px;
+  right: 0;
+  left: auto;
+}
 .button {
     
     -moz-box-shadow:inset 0px 1px 0px 0px #9acc85;
@@ -51,7 +70,6 @@
 li.checklist-item input, li.checklist-item span, li.checklist-item i{
   font-size: 20px;
   color: #333;
-  margin: 0;
 }
 li.checklist-item label {display: inline-block; }
 li.checklist-item .options{ display: none; }
